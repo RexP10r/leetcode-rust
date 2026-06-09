@@ -1,8 +1,2 @@
-pub mod lc1768;
-pub mod lc88;
-pub mod lc27;
-pub mod lc1071;
-pub mod lc26;
-pub mod lc1431;
-pub mod lc605;
-pub mod lc345;
+pub mod easy;
+pub mod medium;
