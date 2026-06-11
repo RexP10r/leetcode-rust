@@ -6,3 +6,4 @@ pub mod lc26;
 pub mod lc1431;
 pub mod lc605;
 pub mod lc345;
+pub mod lc283;
