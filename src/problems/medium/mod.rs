@@ -5,3 +5,4 @@ pub mod lc443;
 pub mod lc11;
 pub mod lc1679;
 pub mod lc1493;
+pub mod lc228;
