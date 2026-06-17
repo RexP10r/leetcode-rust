@@ -10,3 +10,4 @@ pub mod lc283;
 pub mod lc392;
 pub mod lc228;
 pub mod lc125;
+pub mod lc21;
