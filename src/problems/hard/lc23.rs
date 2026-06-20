@@ -12,37 +12,30 @@ impl ListNode {
         ListNode { next: None, val }
     }
 }
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
+
 impl Solution {
-    pub fn merge_two_lists(
-        mut list1: Option<Box<ListNode>>,
-        mut list2: Option<Box<ListNode>>,
-    ) -> Option<Box<ListNode>> {
-        let mut dummy = ListNode::new(0);
-        let mut tail = &mut dummy.next;
-
-        while list1.is_some() && list2.is_some() {
-            if list1.as_ref().unwrap().val <= list2.as_ref().unwrap().val {
-                let mut next_node = list1.take().unwrap();
-                list1 = next_node.next.take();
-                *tail = Some(next_node);
-            } else {
-                let mut next_node = list2.take().unwrap();
-                list2 = next_node.next.take();
-                *tail = Some(next_node);
-            }
-            tail = &mut tail.as_mut().unwrap().next;
-        }
-
-        *tail = list1.or(list2);
-
-        dummy.next
-    }
     pub fn merge_k_lists(mut lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
-        loop {
-            let mut new_vec = Vec::with_capacity(lists.len() / 2);
-            for i in 1..lists.len() {
-                new_vec.push(Self::merge_two_lists(lists[i - 1].take(), lists[i].take()));
+        let mut priority_queue = BinaryHeap::new();
+        for (i, list) in lists.iter().enumerate() {
+            if let Some(node) = list {
+                priority_queue.push(Reverse((node.val, i)));
             }
         }
+        let mut dummy = Box::new(ListNode::new(0));
+        let mut current = &mut dummy;
+        while let Some(Reverse((_, i))) = priority_queue.pop() {
+            if let Some(mut head) = lists[i].take() {
+                lists[i] = head.next.take();
+                if let Some(next_node) = &lists[i] {
+                    priority_queue.push(Reverse((next_node.val, i)));
+                } 
+                current.next = Some(head);
+                current = current.next.as_mut().unwrap();
+            }
+            
+        };
+        dummy.next
     }
 }
