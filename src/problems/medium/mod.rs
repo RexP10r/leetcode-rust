@@ -8,3 +8,4 @@ pub mod lc334;
 pub mod lc443;
 pub mod lc560;
 pub mod lc567;
+pub mod lc849;
