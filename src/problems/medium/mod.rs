@@ -11,3 +11,4 @@ pub mod lc567;
 pub mod lc849;
 pub mod lc56;
 pub mod lc438;
+pub mod lc101;
