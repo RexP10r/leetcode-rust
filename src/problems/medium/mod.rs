@@ -1,3 +1,4 @@
+pub mod lc3;
 pub mod lc11;
 pub mod lc49;
 pub mod lc1493;
