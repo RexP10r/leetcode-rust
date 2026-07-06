@@ -14,3 +14,4 @@ pub mod lc438;
 pub mod lc101;
 pub mod lc3;
 pub mod lc98;
+pub mod lc200;
