@@ -14,3 +14,4 @@ pub mod lc21;
 pub mod lc933;
 pub mod lc20;
 pub mod lc1;
+pub mod lc1446;
