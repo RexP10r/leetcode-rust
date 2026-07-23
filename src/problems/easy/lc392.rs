@@ -2,8 +2,25 @@
 struct Solution;
 impl Solution {
     pub fn is_subsequence(s: String, t: String) -> bool {
-        let mut it = t.chars();
-        s.chars().into_iter().all(|sc| it.any(|tc| tc == sc))
+        if s.len() == 0 {
+            return true;
+        }
+        let mut s_ptr = 0;
+        let s_bytes = s.into_bytes();
+        let t_bytes = t.into_bytes();
+        let s_len = s_bytes.len();
+        let t_len = t_bytes.len();
+        for t_ptr in 0..t_len {
+            unsafe {
+                if t_bytes.get_unchecked(t_ptr) == s_bytes.get_unchecked(s_ptr) {
+                    s_ptr += 1;
+                }
+            }
+            if s_ptr == s_len {
+                return true;
+            }
+        }
+        false
     }
 }
 
