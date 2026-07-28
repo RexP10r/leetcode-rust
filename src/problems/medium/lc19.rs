@@ -2,10 +2,7 @@
 struct Solution;
 use crate::utils::linked_list::ListNode;
 impl Solution {
-    pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
-        let mut dummy = Box::new(ListNode::new(0));
-        dummy.next = head.clone();
-
+    pub fn remove_nth_from_end(mut head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
         let mut len = 0;
         {
             let mut cur = head.as_ref();
@@ -14,20 +11,24 @@ impl Solution {
                 len += 1;
             }
         }
+        if len == n {
+            return head.and_then(|n| n.next);
+        }
 
-        let mut cur = &mut dummy;
-        let steps = len - n;
+        let mut cur = head.as_mut();
+        let steps = len - n - 1;
 
         for _ in 0..steps {
-            if let Some(ref mut node) = cur.next {
-                cur = node;
+            if let Some(node) = cur {
+                cur = node.next.as_mut();
             }
         }
 
-        if let Some(mut node_to_delete) = cur.next.take() {
-            cur.next = node_to_delete.next.take();
+        if let Some(node) = cur {
+            let next_node = node.next.take();
+            node.next = next_node.and_then(|n| n.next);
         }
 
-        dummy.next
+        head
     }
 }
