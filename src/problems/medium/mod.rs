@@ -21,3 +21,4 @@ pub mod lc148;
 pub mod lc2;
 pub mod lc1004;
 pub mod lc236;
+pub mod lc19;
