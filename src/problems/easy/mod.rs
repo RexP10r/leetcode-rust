@@ -20,3 +20,4 @@ pub mod lc350;
 pub mod lc268;
 pub mod lc977;
 pub mod lc643;
+pub mod lc2215;
