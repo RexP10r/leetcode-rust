@@ -21,3 +21,4 @@ pub mod lc268;
 pub mod lc977;
 pub mod lc643;
 pub mod lc2215;
+pub mod lc1207;
