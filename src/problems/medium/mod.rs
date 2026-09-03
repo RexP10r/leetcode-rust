@@ -26,3 +26,4 @@ pub mod lc279;
 pub mod lc1456;
 pub mod lc1657;
 pub mod lc2352;
+pub mod lc649;
