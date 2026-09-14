@@ -33,7 +33,7 @@ impl Solution {
 }
 #[cfg(test)]
 mod test {
-    use crate::problems::medium::lc1466::Solution;
+    use crate::problems::medium::lc1466_1::Solution;
 
     #[test]
     fn test_example_1() {
